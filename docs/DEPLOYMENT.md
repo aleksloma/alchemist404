@@ -57,17 +57,17 @@ curl -s -I -H "Accept-Encoding: gzip" https://alchemist404-945483496927.europe-w
 
 Then click through all sections (About pager, carousel, team, footer).
 
-## Custom domain: alchemist404.com
+## Custom domain: alchemist404.com (DONE, 2026-08-21)
 
-Setup order (step 1 is the owner's, in the browser):
+All steps completed on 2026-08-21:
 
-1. **Verify domain ownership** (one-time): `gcloud domains verify alchemist404.com` opens Google Search Console. Choose the "Domain" property, copy the `google-site-verification=...` TXT value it shows, add it at Namecheap as a TXT record with host `@`, wait a few minutes, click Verify.
-2. **Create the mappings** (after verification succeeds):
+1. Domain ownership verified in Google Search Console (Domain property for alchemist404.com, `google-site-verification` TXT record added at Namecheap by the owner; `gcloud domains list-user-verified` shows the domain).
+2. Domain mappings created on the Cloud Run service:
    ```bash
    gcloud beta run domain-mappings create --service alchemist404 --domain alchemist404.com --region europe-west1
    gcloud beta run domain-mappings create --service alchemist404 --domain www.alchemist404.com --region europe-west1
    ```
-3. **Add the site DNS records at Namecheap** (Domain List -> alchemist404.com -> Advanced DNS, remove any parking records first). The records the mapping requires (confirm against the `describe` command's output):
+3. DNS records configured at Namecheap (Advanced DNS). The records Google's mappings require matched these exactly, and public DNS already resolves them:
 
 | Type | Host | Value |
 |---|---|---|
@@ -80,7 +80,9 @@ Setup order (step 1 is the owner's, in the browser):
 | AAAA | @ | 2001:4860:4802:36::15 |
 | AAAA | @ | 2001:4860:4802:38::15 |
 | CNAME | www | ghs.googlehosted.com. |
-| TXT | @ | google-site-verification=... (from step 1) |
+| TXT | @ | google-site-verification=... (Search Console value) |
+
+Certificate status at time of writing: `DomainRoutable` True, `CertificateProvisioned` pending (Google provisions automatically once it observes the DNS; typically 15 minutes to a few hours).
 
 SSL: Google provisions and renews the certificate automatically once DNS propagates (minutes to a few hours). Nothing to maintain.
 
@@ -110,7 +112,7 @@ gcloud run services update-traffic alchemist404 --region europe-west1 --to-revis
 
 ## Git workflow
 
-- Repo: **https://github.com/aleksloma/alchemist404.git**, branch **main**, GitHub account **aleksloma**.
+- Repo: **https://github.com/aleksloma/alchemist404.git**, branch **main**, GitHub account **aleksloma**. Initial push completed 2026-08-21 (commits `d2f46f0`, `b7a17e4`, `622be71`).
 - Committed: docs, raw asset folders, `site/` sources (including processed `site/src/assets/`), deployment files. Ignored (see root `.gitignore` and `site/.gitignore`): `node_modules/`, `dist/`, `.vite/`, editor/OS cruft. Root `.gitattributes` forces LF on `*.sh`, `Dockerfile`, `*.conf` so Linux builds do not choke on CRLF.
 - Authentication: GitHub CLI web flow, no tokens stored in the repo:
   ```bash
