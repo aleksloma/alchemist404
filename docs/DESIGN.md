@@ -47,8 +47,8 @@ Contrast rules: `--text-light` on `--ink`/`--slate`/`--panel-dark`; `--text-dark
 | `background/Ilustração_Sem_Título.png` | Full-bleed hero background (ruins + winged statue + dusk sky). Darken bottom edge with a gradient into `--ink` so the page flows into dark sections. |
 | `ლოგო სათაურით/Alchemist_404_Logo (1).png` | Hero logo, centered. Also footer at small size. |
 | `favicon/Alchemist_40ფ4_Logo (1).png` | Source for favicon set (gold 404 mark). |
-| `აღწერის ფანჯარა/Turorial_Window (2).png` | "Tutorial window" frame: gold frame with dragon skulls, parchment interior, heart gem at top. Use as the container for the About / game description section. Text is placed over the parchment area. |
-| `აღწერის ფანჯარა/Turorial_Window_butons*.png` | Frame variants with prev/next gem buttons. Use for the screenshots carousel container if a carousel is built. |
+| `აღწერის ფანჯარა/Turorial_Window (2).png` | "Tutorial window" frame: gold frame with dragon skulls, parchment interior, heart gem at top, arrow-gem bar at the bottom. Container for the About section, which is a 3-page pager: the frame's arrow gems are real buttons that page through the About text. |
+| `აღწერის ფანჯარა/Turorial_Window_butons*.png` | Pressed states for the About pager arrows: `butons.png` is the idle bar (both gems green), `butons Left .png` has the left gem pink (left pressed), `butonsright.png` has the right gem pink (right pressed). The pink gem sprites are cropped by the asset pipeline and swapped in on press. |
 | `ღილაკი/Box text_ (1).png` | Wide dark plaque with gold border and green gem arrows. Use as button / section-title plaque (9-slice or background-image with padding). |
 | `ჩარჩო screenshot-ებისთვის/ENEMY_Health horizontal 3_.png` | Landscape gold frame with parchment interior. Frame for game screenshots. |
 | `ჩარჩო წევრების ფოტოებისთვის/ENEMY_Health_ (1).png` | Portrait gold frame. Frame for team member photos (photo masked into the interior area). |

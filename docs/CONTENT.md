@@ -13,7 +13,10 @@ Official description (About.pdf, verbatim):
 ### Suggested copy
 
 - Tagline (hero): "Master real chemistry. Survive the dungeon." (placeholder, owner may replace)
-- About: "Alchemist 404 is an experimental roguelike deckbuilder inspired by real-world chemistry. Isekai'd into a fantasy world, you must fight elemental dragons using a deck built around sword mastery and become the hero you were never supposed to be. Every reaction you trigger is inspired by real chemistry, so the deeper you play, the more chemistry you actually know."
+- About: shown as a 3-page pager inside the tutorial-window frame (the frame's arrow gems page through it, owner's request). The pages, verbatim:
+  1. "Alchemist 404 is an experimental roguelike deckbuilder inspired by real-world chemistry."
+  2. "Isekai'd into a fantasy world, you fight elemental dragons with a deck built around sword mastery and become the hero you were never supposed to be."
+  3. "Every reaction you trigger is inspired by real chemistry, so the deeper you play, the more chemistry you actually know."
 - Features (from About.pdf, light copyedit only):
   1. **Tag-Based Card System**: cards are defined by tags and effects instead of fixed damage numbers, so your hero's stats determine how powerful they become.
   2. **Slot-Based Combat**: place cards into different slots to predict, counter, and outplay your enemy's actions.

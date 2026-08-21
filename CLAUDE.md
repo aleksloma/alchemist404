@@ -5,7 +5,8 @@
 An informational website for **Alchemist 404**, an educational action-puzzle video game that teaches real chemistry reactions through gameplay. The site presents the game, its features, screenshots, and the team behind it.
 
 - Live domain: **alchemist404.com** (registered on Namecheap, DNS points to GCP)
-- Hosting: **GCP Cloud Run** (nginx container serving a static build, scale to zero)
+- Hosting: **GCP Cloud Run** (nginx container serving a static build, scale to zero), project `alchemist404`, region `europe-west1`
+- Git: **https://github.com/aleksloma/alchemist404.git**, branch `main` (workflow in `docs/DEPLOYMENT.md`)
 - Language: **English only**
 - Type: static informational site. No backend, no database, no user accounts.
 
@@ -17,7 +18,7 @@ An informational website for **Alchemist 404**, an educational action-puzzle vid
 | `docs/ARCHITECTURE.md` | Tech stack, repo structure, hosting decision (ADR) |
 | `docs/DESIGN.md` | Visual identity, colors, typography, components |
 | `docs/CONTENT.md` | Page structure, all site copy, team bios, asset inventory |
-| `docs/DEPLOYMENT.md` | Localhost, Docker, Cloud Run, Namecheap DNS runbook |
+| `docs/DEPLOYMENT.md` | Localhost, Docker, Cloud Run, Namecheap DNS runbook, git workflow |
 
 ## Source assets (do not edit originals)
 

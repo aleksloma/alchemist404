@@ -1,0 +1,7 @@
+# Keep the Cloud Build upload small; the build runs npm ci + vite build itself.
+.gcloudignore
+.git
+node_modules/
+dist/
+.vite/
+deploy.sh

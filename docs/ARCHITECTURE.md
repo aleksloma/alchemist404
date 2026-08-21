@@ -80,14 +80,23 @@ alchemist/
 
 ## Asset pipeline
 
-`scripts/process-assets.mjs` (run via `npm run assets`) reads the two raw folders and writes optimized outputs to `src/assets/img/`:
+`scripts/process-assets.mjs` (run via `npm run assets`) reads the raw folders at the repo root and writes optimized outputs to `src/assets/img/`, `src/assets/fonts/`, and `public/`:
 
-- Resize: background to 1920px wide, logo to 800px, frames to their displayed size x2, team photos to 640px square-cropped
-- Convert to WebP quality ~80; keep PNG (transparent) fallback for frames/logo where transparency is needed
-- Favicon: derive 32/180/512 px PNGs + .ico from the favicon source
-- Fonts: unzip Comic Relief, also generate .woff2
+- Resize: background to 1920/960px wide, logo to 800px, frames to their displayed size x2, team photos to 640px square-cropped
+- Gameplay screenshots (from `screnshots + additional info/`): 1600px and 800px wide, WebP + JPEG
+- About pager pressed gems: pink gem sprites cropped (half-canvas + trim) from the `Turorial_Window_butons*` variants, 140px, WebP + PNG
+- Convert to WebP quality ~80; keep PNG (transparent) fallback for frames/logo/gems where transparency is needed
+- Favicon: derive 32/180/512 px PNGs + .ico from the favicon source; also a 1200x630 og-logo.png for Open Graph
+- Fonts: unzip Comic Relief (fflate), generate .woff2 (wawoff2), keep OFL.txt
 
-The script must handle the Georgian and accented file names (use directory listing, not hard-coded glob strings, and normalize Unicode).
+The script must handle the Georgian and accented file names (use directory listing, not hard-coded glob strings, and normalize Unicode). Frame overlay coordinates in `src/styles/main.css` were pixel-measured from the processed frame art (parchment/gem bounding boxes); re-measure if frame assets change.
+
+## Interactive components (vanilla JS, `src/js/main.js`)
+
+- Burger nav (aria-expanded, Escape closes)
+- Scroll reveal (IntersectionObserver + explicit reveal on load/hashchange/scrollend, motion-safe)
+- Screenshots carousel: one framed slide at a time, infinite wrap, autoplay 5s (pauses on hover/keyboard-focus/hidden tab, resumes ~10s after pointer interaction, killed permanently by keyboard use, disabled under prefers-reduced-motion), dots + live counter, neighbor-slide preload, lightbox via native dialog (focus trap, Escape, arrow keys)
+- About pager: 3 pages inside the tutorial-window frame; the frame's arrow gems are transparent buttons with the game's pink pressed-gem art shown on press; wrap-around, dots + live counter, arrow keys; under 700px the frame falls back to a parchment panel with circular arrow buttons
 
 ## Data flow and integration points
 
