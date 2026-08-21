@@ -1,0 +1,20 @@
+{
+  "name": "alchemist404-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Informational website for Alchemist 404, an educational action-puzzle game",
+  "scripts": {
+    "assets": "node scripts/process-assets.mjs",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "fflate": "^0.8.2",
+    "png-to-ico": "^2.1.8",
+    "sharp": "^0.33.5",
+    "vite": "^6.0.0",
+    "wawoff2": "^2.0.1"
+  }
+}

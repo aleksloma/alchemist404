@@ -1,0 +1,4 @@
+# Keep Unix line endings for files executed on Linux (Docker, Cloud Build)
+*.sh text eol=lf
+Dockerfile text eol=lf
+*.conf text eol=lf

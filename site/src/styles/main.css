@@ -1,0 +1,788 @@
+/* Alchemist 404 - main stylesheet. Mobile-first. Tokens from docs/DESIGN.md. */
+
+/* ---------- Fonts (self-hosted Comic Relief, OFL license) ---------- */
+@font-face {
+  font-family: 'Comic Relief';
+  src: url('../assets/fonts/ComicRelief-Regular.woff2') format('woff2'),
+       url('../assets/fonts/ComicRelief-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Comic Relief';
+  src: url('../assets/fonts/ComicRelief-Bold.woff2') format('woff2'),
+       url('../assets/fonts/ComicRelief-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------- Tokens (docs/DESIGN.md, verbatim) ---------- */
+:root {
+  /* backgrounds */
+  --ink:        #0d1115;
+  --slate:      #1e364b;
+  --steel:      #264b63;
+  /* sky accents */
+  --dusk:       #834678;
+  --rose:       #d088ad;
+  /* UI metals and panels */
+  --gold:       #d7af59;
+  --gold-mid:   #a68b4b;
+  --bronze:     #5c4f32;
+  --parchment:  #d0cecb;
+  --panel-dark: #17181a;
+  /* accent */
+  --gem-green:  #3ddc55;
+  /* text */
+  --text-light: #f2ede2;
+  --text-dark:  #241d12;
+
+  --font-display: 'Comic Relief', 'Comic Sans MS', cursive;
+  --font-body: Georgia, 'Times New Roman', serif;
+  --header-h: 64px;
+}
+
+/* ---------- Reset / base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-padding-top: calc(var(--header-h) + 8px);
+}
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--text-light);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+img { max-width: 100%; height: auto; }
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+  margin: 0 0 0.6em;
+}
+h1, h2 { font-weight: 700; }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
+h3 { font-size: 1.15rem; }
+
+a { color: var(--text-light); }
+
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 8px; top: -48px;
+  z-index: 100;
+  background: var(--gold);
+  color: var(--text-dark);
+  font-family: var(--font-display);
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  transition: top 0.15s ease-out;
+}
+.skip-link:focus { top: 8px; }
+
+section {
+  padding: clamp(2.25rem, 5vw, 3.5rem) 1rem;
+  max-width: 76rem;
+  margin: 0 auto;
+}
+
+/* Anchor jumps must land with the heading visible below the fixed header. */
+section[id], footer[id] {
+  scroll-margin-top: calc(var(--header-h) + 8px);
+}
+
+.section-title {
+  text-align: center;
+  color: var(--gold);
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+}
+
+/* ---------- Header / nav ---------- */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--ink) 92%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--bronze);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  height: var(--header-h);
+}
+
+.nav-brand img {
+  display: block;
+  width: 90px;
+  height: auto;
+}
+
+.nav-toggle {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: 1px solid var(--gold-mid);
+  border-radius: 4px;
+  padding: 10px 9px;
+  cursor: pointer;
+}
+.nav-toggle-bar {
+  display: block;
+  width: 22px; height: 2px;
+  background: var(--gold);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(4) { transform: translateY(-7px) rotate(-45deg); }
+
+.nav-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* Mobile: dropdown panel */
+@media (max-width: 767px) {
+  .nav-menu {
+    position: absolute;
+    top: var(--header-h);
+    left: 0; right: 0;
+    background: var(--panel-dark);
+    border-bottom: 2px solid var(--gold-mid);
+    display: none;
+    flex-direction: column;
+  }
+  .nav-menu.is-open { display: flex; }
+  .nav-menu a {
+    display: block;
+    padding: 0.9rem 1.25rem;
+    font-family: var(--font-display);
+    text-decoration: none;
+    border-top: 1px solid var(--bronze);
+  }
+  .nav-menu a:hover { color: var(--gold); }
+}
+@media (min-width: 768px) {
+  .nav-toggle { display: none; }
+  .nav-menu {
+    display: flex;
+    gap: clamp(1rem, 3vw, 2.25rem);
+  }
+  .nav-menu a {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    text-decoration: none;
+    padding: 0.25rem 0;
+    border-bottom: 2px solid transparent;
+  }
+  .nav-menu a:hover {
+    color: var(--gold);
+    border-bottom-color: var(--gem-green);
+  }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  max-width: none;
+  min-height: 100svh;
+  padding: calc(var(--header-h) + 2rem) 1rem 4rem;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.hero-bg, .hero-bg img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.hero-bg img {
+  object-fit: cover;
+  /* keep the winged statue (center-right of the art) in view */
+  object-position: 62% 38%;
+}
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom,
+      rgba(13, 17, 21, 0.55) 0%,
+      rgba(13, 17, 21, 0.15) 30%,
+      rgba(13, 17, 21, 0.25) 65%,
+      var(--ink) 100%);
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.hero-logo {
+  width: min(85vw, 520px);
+  height: auto;
+  filter: drop-shadow(0 6px 24px rgba(0, 0, 0, 0.6));
+}
+
+.hero-tagline {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.8vw, 1.5rem);
+  margin: 0;
+  color: var(--text-light);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+/* ---------- Plaque button (game's dark plaque asset) ---------- */
+.btn-plaque {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: var(--text-light);
+  text-decoration: none;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  background-image: url('../assets/img/plaque.webp');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  padding: 1.1em 3.2em;
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+.btn-plaque:hover, .btn-plaque:focus-visible {
+  filter: drop-shadow(0 0 10px rgba(215, 175, 89, 0.7));
+  transform: translateY(-2px);
+}
+
+/* ---------- About: tutorial window frame ---------- */
+.about { text-align: center; }
+
+.tutorial-frame {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.tutorial-frame > picture img { display: block; width: 100%; height: auto; }
+/* Interior parchment area of Turorial_Window (2).png, in % of the frame image
+   (parchment spans ~21-79% horizontally, ~32-87% vertically, with the gem
+   button strip along the bottom ~72-89%). */
+.tutorial-frame-content {
+  position: absolute;
+  left: 21%; right: 21%;
+  top: 33%; bottom: 28%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.tutorial-frame-content p {
+  margin: 0;
+  color: var(--text-dark);
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 1.4vw, 1.02rem);
+  line-height: 1.45;
+  text-align: center;
+}
+/* ---------- About pager (pages inside the tutorial window) ---------- */
+.about-pages {
+  display: grid;
+  width: 100%;
+  height: 100%;
+}
+.about-page {
+  grid-area: 1 / 1;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  visibility: hidden;
+}
+.about-page.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .about-page.is-active { transition: opacity 0.3s ease; }
+}
+
+/* Hit areas over the frame art's arrow gems.
+   Gem centers measured from frame-tutorial.png pixels:
+   left gem ~(37.3%, 84.5%), right gem ~(62.8%, 83.5%). */
+.about-arrow {
+  position: absolute;
+  width: 13%;
+  height: 18%;
+  min-width: 48px;
+  min-height: 48px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+}
+.about-arrow-prev { left: 30.8%; top: 75.5%; }
+.about-arrow-next { left: 56.3%; top: 74.5%; }
+.about-arrow:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: -2px;
+  border-radius: 8px;
+}
+/* Pressed state: the game's pink gem art over the green gem */
+.about-arrow picture { display: contents; }
+.about-arrow-pressed {
+  width: 58%;
+  height: auto;
+  opacity: 0;
+  pointer-events: none;
+}
+.about-arrow:active .about-arrow-pressed,
+.about-arrow.is-pressed .about-arrow-pressed {
+  opacity: 1;
+}
+
+.about-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+.about-controls .about-mobile-arrow { width: 40px; height: 40px; }
+@media (min-width: 700px) {
+  /* extra specificity: the later .carousel-arrow rule sets display */
+  .about-controls .about-mobile-arrow { display: none; }
+}
+
+/* On narrow screens the parchment area gets too small for the text:
+   drop to a parchment panel styled with the same palette.
+   The frame-art arrow overlays disappear with the frame; the circular
+   buttons in .about-controls take over. */
+@media (max-width: 699px) {
+  .tutorial-frame > picture { display: none; }
+  .about-arrow { display: none; }
+  .tutorial-frame-content {
+    position: static;
+    background: var(--parchment);
+    border: 4px solid var(--gold-mid);
+    border-radius: 10px;
+    box-shadow: 0 0 0 3px var(--bronze);
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+/* ---------- Features ---------- */
+.features-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 600px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1100px) { .features-grid { grid-template-columns: repeat(4, 1fr); } }
+
+.feature-card {
+  position: relative;
+  background: linear-gradient(160deg, #1b1c1f 0%, var(--panel-dark) 55%, #101216 100%);
+  border: 2px solid var(--gold-mid);
+  outline: 1px solid var(--bronze);
+  outline-offset: 3px;
+  box-shadow:
+    inset 0 0 0 2px var(--bronze),
+    inset 0 0 28px rgba(0, 0, 0, 0.65),
+    0 6px 18px rgba(0, 0, 0, 0.55);
+  border-radius: 6px;
+  padding: 0 1.1rem 1.35rem;
+  text-align: center;
+  transition: box-shadow 0.25s ease;
+}
+.feature-card:hover {
+  box-shadow:
+    inset 0 0 0 2px var(--bronze),
+    inset 0 0 28px rgba(0, 0, 0, 0.65),
+    0 0 16px rgba(215, 175, 89, 0.35),
+    0 6px 18px rgba(0, 0, 0, 0.55);
+}
+/* Gem-green corner accents, echoing the frames' gem details */
+.feature-card::before, .feature-card::after {
+  content: '';
+  position: absolute;
+  width: 9px; height: 9px;
+  background: var(--gem-green);
+  transform: rotate(45deg);
+  box-shadow: 0 0 6px rgba(61, 220, 85, 0.7);
+}
+.feature-card::before { top: -5px; left: calc(50% - 4.5px); }
+.feature-card::after { bottom: -5px; left: calc(50% - 4.5px); }
+/* Title on the game's plaque asset */
+.feature-card h3 {
+  color: var(--gold);
+  background-image: url('../assets/img/plaque.webp');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  padding: 1.15em 1.6em;
+  margin: -0.9rem auto 0.75rem;
+  max-width: 105%;
+  width: calc(100% + 1.4rem);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+  font-size: 1.08rem;
+  line-height: 1.15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 4.6em;
+}
+.feature-card p { margin: 0; }
+
+/* ---------- Screenshots carousel ---------- */
+.carousel {
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.carousel-stage {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.carousel-track {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* Fade-in only: the outgoing slide hides instantly so its dark panels never
+   show through the incoming frame's transparent margins. */
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: none;
+}
+.carousel-slide.is-active {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .carousel-slide.is-active {
+    transition: opacity 0.45s ease;
+  }
+}
+
+.shot-frame { margin: 0; }
+/* Positioning context for the interior overlay: the frame image only,
+   excluding the caption (whose wrapped height would skew the % insets). */
+.shot-frame-visual { position: relative; }
+.shot-frame-border { position: relative; z-index: 1; display: block; }
+.shot-frame-border img { display: block; width: 100%; height: auto; }
+
+/* Screenshot sits over the frame's opaque parchment interior
+   (the illustration has transparent margins: interior ~12-86% x, ~29-91% y). */
+.shot-zoom {
+  position: absolute;
+  left: 12.4%; top: 28.5%;
+  width: 72%;
+  height: 61%;
+  z-index: 2;
+  padding: 0;
+  border: 0;
+  background: var(--panel-dark);
+  cursor: zoom-in;
+}
+.shot-zoom picture, .shot-zoom img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.shot-zoom:focus-visible { outline-offset: -3px; }
+
+.shot-caption {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--text-light);
+  margin-top: 0.25rem;
+}
+
+.carousel-arrow {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--gold-mid);
+  background: var(--panel-dark);
+  color: var(--gold);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.carousel-arrow:hover {
+  color: var(--gem-green);
+  border-color: var(--gold);
+  box-shadow: 0 0 10px rgba(215, 175, 89, 0.45);
+}
+/* Small screens: overlay the arrows on the slide so the frame gets full width.
+   Scoped to .carousel-stage: the About pager borrows .carousel-arrow styling
+   and must keep normal flow inside .about-controls. */
+@media (max-width: 599px) {
+  .carousel-stage { position: relative; }
+  .carousel-stage .carousel-arrow {
+    position: absolute;
+    z-index: 3;
+    top: 38%;
+    width: 40px; height: 40px;
+    opacity: 0.92;
+  }
+  .carousel-stage .carousel-arrow svg { width: 20px; height: 20px; }
+  .carousel-stage .carousel-prev { left: 2px; }
+  .carousel-stage .carousel-next { right: 2px; }
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+.carousel-dots { display: flex; gap: 0.6rem; }
+.carousel-dot {
+  width: 14px; height: 14px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid var(--gold-mid);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.carousel-dot:hover { border-color: var(--gem-green); }
+.carousel-dot[aria-current="true"] {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+.carousel-counter {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--text-light);
+  min-width: 3.2em;
+}
+
+/* ---------- Lightbox ---------- */
+.lightbox {
+  border: none;
+  padding: 0;
+  background: transparent;
+  max-width: min(96vw, 1620px);
+  width: auto;
+  overflow: visible;
+}
+.lightbox::backdrop {
+  background: rgba(6, 8, 10, 0.88);
+}
+.lightbox-figure { margin: 0; }
+.lightbox-img {
+  display: block;
+  max-width: min(92vw, 1600px);
+  max-height: 82vh;
+  width: auto;
+  height: auto;
+  border: 3px solid var(--gold-mid);
+  border-radius: 4px;
+  background: var(--panel-dark);
+}
+.lightbox-caption {
+  text-align: center;
+  font-family: var(--font-display);
+  color: var(--text-light);
+  padding: 0.6rem 0.5rem;
+}
+.lightbox-close, .lightbox-arrow {
+  position: fixed;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--gold-mid);
+  background: var(--panel-dark);
+  color: var(--gold);
+  cursor: pointer;
+  z-index: 2;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.lightbox-close:hover, .lightbox-arrow:hover { color: var(--gem-green); border-color: var(--gold); }
+.lightbox-close { top: 14px; right: 14px; }
+.lightbox-prev { left: 10px; top: 50%; transform: translateY(-50%); }
+.lightbox-next { right: 10px; top: 50%; transform: translateY(-50%); }
+@media (max-width: 599px) {
+  .lightbox-close, .lightbox-arrow { width: 40px; height: 40px; }
+  .lightbox-prev { left: 4px; }
+  .lightbox-next { right: 4px; }
+}
+
+/* ---------- Team ---------- */
+.team-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2.5rem 1.5rem;
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+@media (min-width: 768px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1100px) { .team-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.member {
+  text-align: center;
+  max-width: 340px;
+  width: 100%;
+}
+
+.member-frame {
+  position: relative;
+  width: min(100%, 300px);
+  margin: 0 auto 1rem;
+}
+.member-frame-border { position: relative; z-index: 1; display: block; }
+.member-frame-border img { display: block; width: 100%; height: auto; }
+/* Interior opening of the portrait frame, in % of the frame image
+   (the illustration has transparent margins: interior ~24-76% x, ~12-90% y). */
+.member-photo {
+  position: absolute;
+  left: 24.8%; top: 11.6%;
+  width: 50.4%;
+  height: 77.8%;
+  object-fit: cover;
+  /* above the frame: the frame interior is opaque parchment, not a window */
+  z-index: 2;
+}
+
+.member-name {
+  color: var(--gold);
+  margin-bottom: 0.15em;
+}
+.member-role {
+  font-family: var(--font-display);
+  color: var(--gold);
+  font-size: 0.9rem;
+  margin: 0 0 0.75rem;
+}
+.member-bio {
+  text-align: left;
+  background: var(--panel-dark);
+  border: 1px solid var(--bronze);
+  border-radius: 6px;
+}
+.member-bio summary {
+  cursor: pointer;
+  font-family: var(--font-display);
+  padding: 0.6rem 1rem;
+  color: var(--text-light);
+}
+.member-bio summary:hover { color: var(--gold); }
+.member-bio[open] summary { border-bottom: 1px solid var(--bronze); }
+.member-bio p {
+  margin: 0;
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--panel-dark);
+  border-top: 2px solid var(--bronze);
+  text-align: center;
+  padding: 2.5rem 1rem;
+}
+.footer-logo { width: 140px; height: auto; }
+.footer-contact { font-family: var(--font-display); margin: 1rem 0 0.75rem; }
+.footer-contact a {
+  color: var(--text-light);
+  text-decoration-color: var(--gold-mid);
+}
+.footer-contact a:hover { color: var(--gold); }
+
+.footer-social {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1.4rem;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+.footer-social a {
+  display: inline-flex;
+  padding: 6px;
+  color: var(--text-light);
+  transition: color 0.2s ease;
+}
+.footer-social a:hover { color: var(--gold); }
+
+.footer-copy, .footer-license {
+  margin: 0.25rem 0;
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+/* ---------- Scroll reveal (motion-safe only) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.55s ease-out, transform 0.55s ease-out;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
