@@ -2,7 +2,7 @@
 
 ## What this project is
 
-An informational website for **Alchemist 404**, an educational action-puzzle video game that teaches real chemistry reactions through gameplay. The site presents the game, its features, screenshots, and the team behind it.
+An informational website for **Alchemist 404**, an experimental roguelike deckbuilder inspired by real-world chemistry that teaches real chemistry reactions through gameplay. The site presents the game, its features, screenshots, and the team behind it.
 
 - Live domain: **alchemist404.com** (registered on Namecheap, DNS points to GCP)
 - Hosting: **GCP Cloud Run** (nginx container serving a static build, scale to zero), project `alchemist404`, region `europe-west1`
