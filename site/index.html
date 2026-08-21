@@ -4,17 +4,59 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alchemist 404: A Roguelike Deckbuilder Built on Real Chemistry</title>
-  <meta name="description" content="Alchemist 404 is an experimental roguelike deckbuilder inspired by real-world chemistry. Fight elemental dragons with a deck built around sword mastery, and the deeper you play, the more chemistry you actually know." />
+  <meta name="description" content="Alchemist 404 is a roguelike deckbuilder and educational card game about real chemistry. Learn chemistry by playing: fight elemental dragons, forge your legend." />
   <link rel="canonical" href="https://alchemist404.com/" />
   <meta name="theme-color" content="#0d1115" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Alchemist 404" />
   <meta property="og:title" content="Alchemist 404: A Roguelike Deckbuilder Built on Real Chemistry" />
-  <meta property="og:description" content="An experimental roguelike deckbuilder inspired by real-world chemistry. Master real chemistry. Survive the dungeon." />
+  <meta property="og:description" content="A roguelike deckbuilder inspired by real-world chemistry. Master the alchemy. Forge your legend." />
   <meta property="og:url" content="https://alchemist404.com/" />
   <meta property="og:image" content="https://alchemist404.com/og-logo.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Alchemist 404 logo" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Alchemist 404: A Roguelike Deckbuilder Built on Real Chemistry" />
+  <meta name="twitter:description" content="A roguelike deckbuilder inspired by real-world chemistry. Master the alchemy. Forge your legend." />
+  <meta name="twitter:image" content="https://alchemist404.com/og-logo.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://alchemist404.com/#org",
+        "name": "Alchemist 404",
+        "url": "https://alchemist404.com/",
+        "logo": "https://alchemist404.com/og-logo.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "contact@alchemist404.com",
+          "contactType": "customer support"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/company/alchemist-404/",
+          "https://www.facebook.com/profile.php?id=61588250737892",
+          "https://x.com/Alchemist404Dev"
+        ]
+      },
+      {
+        "@type": "VideoGame",
+        "name": "Alchemist 404",
+        "description": "An experimental roguelike deckbuilder inspired by real-world chemistry. Fight elemental dragons with a deck built around sword mastery and learn real chemistry by playing.",
+        "genre": ["Roguelike deckbuilder", "Educational"],
+        "gamePlatform": "PC",
+        "image": "https://alchemist404.com/og-logo.png",
+        "url": "https://alchemist404.com/",
+        "author": { "@id": "https://alchemist404.com/#org" },
+        "publisher": { "@id": "https://alchemist404.com/#org" }
+      }
+    ]
+  }
+  </script>
 
   <link rel="icon" href="/favicon.ico" sizes="32x32" />
   <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
@@ -60,10 +102,9 @@
         <img src="/src/assets/img/bg-hero-1920.webp" alt="" width="1920" height="861" fetchpriority="high" />
       </picture>
       <div class="hero-inner">
-        <h1 class="sr-only">Alchemist 404</h1>
+        <h1 class="sr-only">Alchemist 404, a roguelike deckbuilder chemistry game</h1>
         <img class="hero-logo" src="/src/assets/img/logo-800.webp" alt="Alchemist 404 logo" width="800" height="480" fetchpriority="high" />
-        <!-- Tagline is a placeholder per docs/CONTENT.md, the owner may replace it. -->
-        <p class="hero-tagline">Master real chemistry. Survive the dungeon.</p>
+        <p class="hero-tagline">Master the alchemy. Forge your legend.</p>
         <a class="btn-plaque" href="#about">Discover the game</a>
       </div>
     </section>
@@ -84,9 +125,6 @@
               </div>
               <div class="about-page" aria-hidden="true">
                 <p>Isekai'd into a fantasy world, you fight elemental dragons with a deck built around sword mastery and become the hero you were never supposed to be.</p>
-              </div>
-              <div class="about-page" aria-hidden="true">
-                <p>Every reaction you trigger is inspired by real chemistry, so the deeper you play, the more chemistry you actually know.</p>
               </div>
             </div>
           </div>
@@ -112,9 +150,8 @@
           <div class="carousel-dots">
             <button type="button" class="carousel-dot" aria-label="Go to page 1" aria-current="true"></button>
             <button type="button" class="carousel-dot" aria-label="Go to page 2"></button>
-            <button type="button" class="carousel-dot" aria-label="Go to page 3"></button>
           </div>
-          <p class="carousel-counter about-counter" aria-live="polite">1 / 3</p>
+          <p class="carousel-counter about-counter" aria-live="polite">1 / 2</p>
           <button class="carousel-arrow about-mobile-arrow about-mobile-next" type="button" aria-label="Next page">
             <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor"><path d="M8.5 3.5 17 12l-8.5 8.5-1.8-1.8L13.4 12 6.7 5.3z"/></svg>
           </button>
@@ -127,7 +164,7 @@
       <h2 id="features-title" class="section-title">Features</h2>
       <ul class="features-grid">
         <li class="feature-card reveal">
-          <h3>Tag-Based Card System</h3>
+          <h3>Tag-Based Cards</h3>
           <p>Cards are defined by tags and effects instead of fixed damage numbers, so your hero's stats determine how powerful they become.</p>
         </li>
         <li class="feature-card reveal">
@@ -298,7 +335,7 @@
           <p class="member-role">Founder, CEO, Developer</p>
           <details class="member-bio">
             <summary>Read bio</summary>
-            <p>Born in Tbilisi, Georgia, Anastasia (Taso) Gegia is a versatile professional fluent in Georgian, English, and French. Most notably, she is the founder, CEO, and developer of "Alchemist 404," an innovative educational action-puzzle video game designed to use real chemistry reactions while playing. A certified European Gestalt psychotherapist with an advanced degree from the Psychology Institute, she also co-founded "EveryWay," a platform facilitating psychologically healthy partying indoor and outdoor group events. Her expansive career spans running a private therapeutic practice, orchestrating high-profile international translation work, managing European solar energy sales for firms like AE Solar and Belinus BV, and launching humanitarian projects for vulnerable communities.</p>
+            <p>Born in Tbilisi, Georgia, Anastasia (Taso) Gegia is a versatile professional fluent in Georgian, English, and French. Most notably, she is the founder, CEO, and developer of "Alchemist 404," an innovative educational puzzle video game designed to use real chemistry reactions while playing. A certified European Gestalt psychotherapist with an advanced degree from the Psychology Institute, she also co-founded "EveryWay," a platform facilitating psychologically healthy partying indoor and outdoor group events. Her expansive career spans running a private therapeutic practice, orchestrating high-profile international translation work, managing European solar energy sales for firms like AE Solar and Belinus BV, and launching humanitarian projects for vulnerable communities.</p>
           </details>
         </li>
 

@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://alchemist404.com/sitemap.xml

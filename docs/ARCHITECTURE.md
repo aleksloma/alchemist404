@@ -96,7 +96,17 @@ The script must handle the Georgian and accented file names (use directory listi
 - Burger nav (aria-expanded, Escape closes)
 - Scroll reveal (IntersectionObserver + explicit reveal on load/hashchange/scrollend, motion-safe)
 - Screenshots carousel: one framed slide at a time, infinite wrap, autoplay 5s (pauses on hover/keyboard-focus/hidden tab, resumes ~10s after pointer interaction, killed permanently by keyboard use, disabled under prefers-reduced-motion), dots + live counter, neighbor-slide preload, lightbox via native dialog (focus trap, Escape, arrow keys)
-- About pager: 3 pages inside the tutorial-window frame; the frame's arrow gems are transparent buttons with the game's pink pressed-gem art shown on press; wrap-around, dots + live counter, arrow keys; under 700px the frame falls back to a parchment panel with circular arrow buttons
+- About pager: 2 pages inside the tutorial-window frame; the frame's arrow gems are transparent buttons with the game's pink pressed-gem art shown on press; wrap-around, dots + live counter, arrow keys; under 700px the frame falls back to a parchment panel with circular arrow buttons
+
+## SEO
+
+All invisible to visitors, in `index.html` head and `public/`:
+
+- Canonical `https://alchemist404.com/`; title under 60 chars; meta description 150-160 chars around "roguelike deckbuilder", "chemistry game", "educational card game", "learn chemistry by playing"
+- Open Graph (og:image 1200x630 `public/og-logo.png` with absolute URLs) and Twitter summary_large_image tags
+- JSON-LD `@graph` with `VideoGame` and `Organization` (contact email, sameAs social profiles)
+- `public/robots.txt` (allow all + Sitemap line) and `public/sitemap.xml` (single canonical URL); both land in dist/ and the Docker image automatically; nginx serves .xml with cache headers
+- One sr-only h1 carrying the title keywords; section headings are h2
 
 ## Data flow and integration points
 

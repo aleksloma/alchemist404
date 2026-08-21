@@ -12,13 +12,12 @@ Official description (About.pdf, verbatim):
 
 ### Suggested copy
 
-- Tagline (hero): "Master real chemistry. Survive the dungeon." (placeholder, owner may replace)
-- About: shown as a 3-page pager inside the tutorial-window frame (the frame's arrow gems page through it, owner's request). The pages, verbatim:
+- Tagline (hero): "Master the alchemy. Forge your legend." (set by the owner, 2026-08-22)
+- About: shown as a 2-page pager inside the tutorial-window frame (the frame's arrow gems page through it, owner's request). The pages, verbatim:
   1. "Alchemist 404 is an experimental roguelike deckbuilder inspired by real-world chemistry."
   2. "Isekai'd into a fantasy world, you fight elemental dragons with a deck built around sword mastery and become the hero you were never supposed to be."
-  3. "Every reaction you trigger is inspired by real chemistry, so the deeper you play, the more chemistry you actually know."
 - Features (from About.pdf, light copyedit only):
-  1. **Tag-Based Card System**: cards are defined by tags and effects instead of fixed damage numbers, so your hero's stats determine how powerful they become.
+  1. **Tag-Based Cards** (title shortened from "Tag-Based Card System" by the owner so it fits the plaque): cards are defined by tags and effects instead of fixed damage numbers, so your hero's stats determine how powerful they become.
   2. **Slot-Based Combat**: place cards into different slots to predict, counter, and outplay your enemy's actions.
   3. **Simultaneous Turns**: plan your moves, commit your cards, then reveal the enemy's hidden actions and watch both sides resolve at once.
   4. **Alchemy & Reactions**: combine elements to trigger reactions inspired by real-world chemistry.
@@ -40,7 +39,7 @@ Six members. Photos in `Alchemist website photos and bios/`. Bios below are tran
 
 ### Anastasia (Taso) Gegia, Founder, CEO, Developer
 Photo: `taso gegia.jpg` (14 MB, must be heavily optimized)
-> Born in Tbilisi, Georgia, Anastasia (Taso) Gegia is a versatile professional fluent in Georgian, English, and French. Most notably, she is the founder, CEO, and developer of "Alchemist 404," an innovative educational action-puzzle video game designed to use real chemistry reactions while playing. A certified European Gestalt psychotherapist with an advanced degree from the Psychology Institute, she also co-founded "EveryWay," a platform facilitating psychologically healthy partying indoor and outdoor group events. Her expansive career spans running a private therapeutic practice, orchestrating high-profile international translation work, managing European solar energy sales for firms like AE Solar and Belinus BV, and launching humanitarian projects for vulnerable communities.
+> Born in Tbilisi, Georgia, Anastasia (Taso) Gegia is a versatile professional fluent in Georgian, English, and French. Most notably, she is the founder, CEO, and developer of "Alchemist 404," an innovative educational puzzle video game designed to use real chemistry reactions while playing. A certified European Gestalt psychotherapist with an advanced degree from the Psychology Institute, she also co-founded "EveryWay," a platform facilitating psychologically healthy partying indoor and outdoor group events. Her expansive career spans running a private therapeutic practice, orchestrating high-profile international translation work, managing European solar energy sales for firms like AE Solar and Belinus BV, and launching humanitarian projects for vulnerable communities.
 
 ### Jamie Mullis, Software Architect, Game Developer
 Photo: `Jamie Mullis.png`
