@@ -13,6 +13,7 @@ Official description (About.pdf, verbatim):
 ### Suggested copy
 
 - Tagline (hero): "Master the alchemy. Forge your legend." (set by the owner, 2026-08-22)
+- Hero CTA: "Discover the game" (plaque button). Since round 6 (2026-10-07) it opens the Steam store page in a new tab instead of scrolling to About: https://store.steampowered.com/app/5232950/Alchemist_404/?beta=1 (keep the `?beta=1` query). Accessible name: "Discover the game (opens Steam in a new tab)". The nav "About" link still scrolls to the About section.
 - About: shown as a 2-page pager inside the tutorial-window frame (the frame's arrow gems page through it, owner's request). The pages, verbatim:
   1. "Alchemist 404 is an experimental roguelike deckbuilder inspired by real-world chemistry."
   2. "Isekai'd into a fantasy world, you fight elemental dragons with a deck built around sword mastery and become the hero you were never supposed to be."
@@ -30,6 +31,7 @@ Published on the site:
 - LinkedIn: https://www.linkedin.com/company/alchemist-404/ (the `?viewAsMember` query parameter from About.pdf is stripped)
 - Facebook: https://www.facebook.com/profile.php?id=61588250737892
 - X: https://x.com/Alchemist404Dev
+- Steam store page: https://store.steampowered.com/app/5232950/Alchemist_404/?beta=1 (hero CTA, also listed as `sameAs` in the VideoGame JSON-LD)
 
 NOT published on the site (in About.pdf, owner has not asked to publish): personal email anastasia@alchemist404.com, phone number 995593304882.
 

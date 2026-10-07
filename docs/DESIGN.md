@@ -59,7 +59,7 @@ Frame technique: the frames are full illustrations with transparent outsides. Si
 ## Page layout (single page, anchored nav)
 
 1. **Header/nav**: slim dark bar, small logo left, anchor links (About, Features, Screenshots, Team, Contact). Collapses to a burger under 768px.
-2. **Hero**: full-viewport background art, big logo, one-line tagline, primary CTA button (plaque asset) "Discover the game" scrolling to About.
+2. **Hero**: full-viewport background art, big logo, one-line tagline, primary CTA button (plaque asset) "Discover the game" opening the Steam store page in a new tab (`target="_blank"`, `rel="noopener noreferrer"`, aria-label notes the new tab). Look, hover and focus states are unchanged.
 3. **About**: tutorial-window frame containing the game description (what it is, real chemistry while playing).
 4. **Features**: 3 or 4 short cards on dark plaques (Learn real chemistry, Action-puzzle gameplay, For students and the curious, Original art and music).
 5. **Screenshots**: screenshots in the landscape gold frames. Until real screenshots are provided, use the background art and frame assets as placeholders with a note in the code.
