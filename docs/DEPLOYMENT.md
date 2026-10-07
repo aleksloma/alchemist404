@@ -20,8 +20,20 @@ This describes the deployment as it actually is, set up on 2026-08-21. Use it fo
 No tokens or keys are stored anywhere in the repo or on disk beyond gcloud's own credential store.
 
 ```bash
-gcloud auth login          # opens the browser; sign in as aleksloma@gmail.com
-gcloud config set project alchemist404
+gcloud auth login aleksloma@gmail.com   # opens the browser; repeat only if the token expires
+```
+
+No `gcloud config set project` is needed. `site/deploy.sh` pins its own account and project by exporting `CLOUDSDK_CORE_ACCOUNT=aleksloma@gmail.com` and `CLOUDSDK_CORE_PROJECT=alchemist404` for its own process, and passes `--project alchemist404` explicitly. It works whichever account or project is active globally (the owner regularly switches to founder@powerdatachat.com / pdc-enterprise for other work), and it never modifies the global gcloud account or project. If aleksloma@gmail.com is not in `gcloud auth list`, the script stops before building with:
+
+```
+ERROR: aleksloma@gmail.com is not authenticated in gcloud.
+Run once:  gcloud auth login aleksloma@gmail.com
+```
+
+For ad hoc gcloud commands against this project, use the same pinning instead of switching the global config:
+
+```bash
+CLOUDSDK_CORE_ACCOUNT=aleksloma@gmail.com gcloud run services describe alchemist404 --project alchemist404 --region europe-west1
 ```
 
 The Google Cloud CLI on this machine is installed at `%LOCALAPPDATA%\Google\Cloud SDK\google-cloud-sdk\bin` (installed via winget, may not be on PATH in every shell).
@@ -33,10 +45,11 @@ cd site
 ./deploy.sh
 ```
 
-That script runs `npm run build` as a local sanity check, then:
+That script checks that aleksloma@gmail.com is authenticated, prints `==> Deploying as aleksloma@gmail.com to project alchemist404`, runs `npm run build` as a local sanity check, then:
 
 ```bash
 gcloud run deploy alchemist404 \
+  --project alchemist404 \
   --source . \
   --region europe-west1 \
   --allow-unauthenticated \
