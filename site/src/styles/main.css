@@ -285,8 +285,8 @@ section[id], footer[id] {
   background-size: 100% 100%;
   background-repeat: no-repeat;
   padding: 1.1em 3.2em;
-  /* Keep the plaque at the width it had with the longer "Discover the game"
-     label (246px at 16px, 295px at 19.2px) now that the text is "Wishlist". */
+  /* Keep the plaque at the width it had with the previous three-word label
+     (246px at 16px, 295px at 19.2px) now that the text is "Wishlist". */
   min-width: 15.4em;
   transition: filter 0.2s ease, transform 0.2s ease;
 }
